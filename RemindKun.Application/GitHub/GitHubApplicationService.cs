@@ -1,4 +1,4 @@
-﻿using RemindKun.Domain.GitHub.Api.Interfaces;
+﻿using RemindKun.Domain.GitHub.Interfaces;
 using RemindKun.Domain.GitHub.Models.Issues.Entities;
 using RemindKun.Domain.GitHub.Models.Issues.ValueObjects;
 using RemindKun.Domain.Remind;
@@ -29,21 +29,11 @@ namespace RemindKun.Application.GitHub
 
         public async Task RemindAsync()
         {
-            var openIssues = await gitHubApiClient.GetOpenIssuesAsync();
-            var issuesEntity = openIssues
-                .Select(issue => new Issue(
-                    id: new Id(issue.Id),
-                    url: issue.Url,
-                    userName: issue.User.Login,
-                    labelIds: issue.Labels.Select(label => label.Id).ToList(),
-                    body: issue.Body,
-                    createdAt: issue.CreatedAt,
-                    updatedAt: issue.UpdatedAt))
-                .ToList();
+            var openIssuesEntity = await gitHubApiClient.GetOpenIssuesAsync();
 
             foreach(var remind in reminds)
             {
-                await remind.SendAsync(issuesEntity);
+                await remind.SendAsync(openIssuesEntity);
             }
         }
     }

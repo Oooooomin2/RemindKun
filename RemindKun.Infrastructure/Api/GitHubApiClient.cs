@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using RemindKun.Domain.GitHub.Api.Interfaces;
-using RemindKun.Domain.GitHub.Models.Issues.Entities.Api.Response;
+using RemindKun.Domain.GitHub.Interfaces;
+using RemindKun.Domain.GitHub.Models.Issues.Entities;
+using RemindKun.Domain.GitHub.Models.Issues.ValueObjects;
 using RemindKun.Infrastructure.Api.Settings;
 using System.Net.Http.Headers;
 
@@ -43,7 +44,17 @@ namespace RemindKun.Infrastructure.Api
             }
 
             var content = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<List<Issue>>(content) ?? [];
+            var openIssues = JsonConvert.DeserializeObject<List<Response.Issue>>(content) ?? [];
+
+            return openIssues.Select(issue => new Issue(
+                    id: new Id(issue.Id),
+                    url: issue.Url,
+                    userName: issue.User.Login,
+                    labelIds: issue.Labels.Select(label => label.Id).ToList(),
+                    body: issue.Body,
+                    createdAt: issue.CreatedAt,
+                    updatedAt: issue.UpdatedAt))
+                .ToList();
         }
     }
 }

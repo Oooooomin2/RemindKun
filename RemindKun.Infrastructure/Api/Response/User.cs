@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace RemindKun.Domain.GitHub.Models.Issues.Entities.Api.Response
+namespace RemindKun.Infrastructure.Api.Response
 {
     public sealed class User
     {

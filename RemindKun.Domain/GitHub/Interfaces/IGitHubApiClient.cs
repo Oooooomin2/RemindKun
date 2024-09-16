@@ -1,6 +1,6 @@
-﻿using RemindKun.Domain.GitHub.Models.Issues.Entities.Api.Response;
+﻿using RemindKun.Domain.GitHub.Models.Issues.Entities;
 
-namespace RemindKun.Domain.GitHub.Api.Interfaces
+namespace RemindKun.Domain.GitHub.Interfaces
 {
     public interface IGitHubApiClient
     {

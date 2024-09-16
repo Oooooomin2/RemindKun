@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RemindKun.Application.GitHub;
-using RemindKun.Domain.GitHub.Api.Interfaces;
+using RemindKun.Domain.GitHub.Interfaces;
 using RemindKun.Domain.Remind;
 using RemindKun.Infrastructure.Api;
 using RemindKun.Infrastructure.Api.Settings;
