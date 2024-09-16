@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "RemindKun": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
