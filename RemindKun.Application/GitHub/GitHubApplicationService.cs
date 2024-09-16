@@ -1,6 +1,4 @@
-﻿using RemindKun.Domain.GitHub.Interfaces;
-using RemindKun.Domain.GitHub.Models.Issues.Entities;
-using RemindKun.Domain.GitHub.Models.Issues.ValueObjects;
+﻿using RemindKun.Domain.GitHub;
 using RemindKun.Domain.Remind;
 
 namespace RemindKun.Application.GitHub

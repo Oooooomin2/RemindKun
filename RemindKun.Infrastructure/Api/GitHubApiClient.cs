@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using RemindKun.Domain.GitHub.Interfaces;
+using RemindKun.Domain.GitHub;
 using RemindKun.Domain.GitHub.Models.Issues.Entities;
 using RemindKun.Domain.GitHub.Models.Issues.ValueObjects;
 using RemindKun.Infrastructure.Api.Settings;
